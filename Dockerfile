@@ -4,6 +4,7 @@ LABEL maintainer="Dan Søndergaard <das@birc.au.dk>"
 
 ENV PYTHONUNBUFFERED 1
 
+RUN echo "deb http://archive.debian.org/debian stretch main contrib non-free" > /etc/apt/sources.list
 RUN apt-get update && apt-get -y install libgl1-mesa-glx && \
     apt-get remove --purge && \
     rm -rf /var/lib/apt/lists/*
