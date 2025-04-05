@@ -14,8 +14,6 @@ RUN conda upgrade -n base conda && \
     conda env create -q -f environment_v2.yml && \
     conda clean -y -i -l -t -p
 
-RUN pip uninstall parso && pip install parso
-
 COPY . /code
 WORKDIR /code
 
