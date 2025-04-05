@@ -71,7 +71,8 @@ class BLASTWrapper(object):
                 "-dbtype",
                 "prot",
                 "-out",
-                os.path.basename(self.db),  # CHANGED
+                # os.path.basename(self.db),  # CHANGED
+                self.db,
                 "-title",
                 "blast.db",
             ]
