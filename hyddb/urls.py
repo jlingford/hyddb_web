@@ -21,11 +21,27 @@ from django.conf.urls import include, url
 
 from django.contrib import admin
 
-admin.site.site_header = 'HydDB Administration'
-admin.site.site_title = 'HydDB'
+admin.site.site_header = "HydDB Administration"  # original
+admin.site.site_title = "HydDB"  # original
+# admin.site.site_header = ""
+# admin.site.site_title = ""
 
+# # original url patterns
+# urlpatterns = [
+#     url(r"^", include("classifier.urls", namespace="classifier")),
+#     url(r"^browser/", include("browser.urls", namespace="browser")),
+#     url(r"^admin/", admin.site.urls),
+# ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# updated url patterns for running locally
 urlpatterns = [
-    url(r'^', include('classifier.urls', namespace='classifier')),
-    url(r'^browser/', include('browser.urls', namespace='browser')),
-    url(r'^admin/', admin.site.urls),
+    url(r"^", include("classifier.urls", namespace="classifier")),
+    url(r"^", include("browser.urls", namespace="browser")),
+    url(r"^admin/", admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# if settings.DEBUG:
+#     urlpatterns = url(
+#         "",
+#         # ... the rest of your URLconf goes here ...
+#     ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
