@@ -1,0 +1,67 @@
+{% extends "common/base.html" %}
+
+{% load staticfiles %}
+{% load cache %}
+
+{% block title %}
+    {{ block.super }} - {{ entry.ncbi_accession }}
+{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link href="{% static 'browser/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<h1>Entry <small>{{ entry.ncbi_accession }}</small></h1>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <table class="table table-striped">
+                <tr>
+                    <td class="entry-property-name">Phylum</td>
+                    <td>{{ entry.phylum }}</td>
+                </tr>
+                <tr>
+                    <td class="entry-property-name">Order</td>
+                    <td>{{ entry.order }}</td>
+                </tr>
+                 <tr>
+                    <td class="entry-property-name">Organism</td>
+                    <td>{{ entry.organism }}</td>
+                </tr>
+                 <tr>
+                    <td class="entry-property-name">Hydrogenase</td>
+                    <td><a href="{% url 'browser:view_class' slug=entry.hydrogenase_class.slug %}">{{ entry.hydrogenase_class }}</a></td>
+                </tr>
+                 <tr>
+                    <td class="entry-property-name">Activity (Predicted)</td>
+                    <td>{{ entry.activity_predicted }}</td>
+                </tr>
+                 <tr>
+                    <td class="entry-property-name">Oxygen Tolerance (Predicted)</td>
+                    <td>{{ entry.oxygen_tolerance_predicted }}</td>
+                </tr>
+                 <tr>
+                    <td class="entry-property-name">Subunits (Predicted)</td>
+                    <td>{{ entry.subunits_predicted }}</td>
+                </tr>
+                 <tr>
+                    <td class="entry-property-name">Metal Centres (Predicted)</td>
+                    <td>{{ entry.metal_centres_predicted }}</td>
+                </tr>
+                 <tr>
+                    <td class="entry-property-name">Accessory Subunits (Predicted)</td>
+                    <td>{{ entry.accessory_subunits_predicted }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <pre class="wrap">{{ entry.protein_sequence }}</pre>
+    </div>
+</div>
+
+{% endblock %}

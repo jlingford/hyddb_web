@@ -1,0 +1,91 @@
+{% extends "common/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ block.super }} - Classify
+{% endblock %}
+
+{% block content %}
+    <h1>Classify</h1>
+
+    <p class="lead">HydDB provides access to an accurate classifier for hydrogenase sequences and a curated database of
+        hydrogenases by known type. The service is provided by the School of Biological Sciences, Monash University and
+        the Bioinformatics Research Centre, Aarhus University.</p>
+
+    {% include "classifier/citing.html" %}
+
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Classify</h3>
+                </div>
+                <div class="panel-body">
+                <div class="alert alert-info" role="alert">
+                    HydDB is unable to accurately check whether uploaded sequences correspond to hydrogenases or not.
+                    Instead, it is well-suited for functionally-predictive classification of known hydrogenases into
+                    different subgroups. Please ensure that all sequences that you upload correspond to catalytic
+                    subunits of hydrogenases (e.g. using conserved domain database and phylogenetic trees). Sequences
+                    that do not encode catalytic subunits of hydrogenases will still be classified, but the result may
+                    be wrong.
+                </div>
+                {% crispy form %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Instructions</h3>
+                </div>
+                <div class="panel-body">
+                    <p>To use the classifier to predict the type of one or more hydrogenases from sequence, either:</p>
+                    <ul>
+                        <li>paste your FASTA-formatted protein sequences into the text area, or</li>
+                        <li>upload a FASTA-formatted file with your protein sequences.</li>
+                    </ul>
+                    <p>Press the "Submit" button to upload the sequences and begin the classification.</p>
+                    <p>If you provided an e-mail address you will receive an e-mail when your job finishes or fails
+                        including a link to the results. You will also be able to download the results as a CSV
+                        file.</p>
+
+                    <p>Only sequences encoding the catalytic subunits of hydrogenases will be classified, i.e. those
+                        binding the [NiFe]-centre (NiFe-hydrogenases), [FeFe]-centre (FeFe-hydrogenases), or [Fe]-centre
+                        (Fe-hydrogenases). Electron-transfer subunits, accessory proteins, and maturation factors cannot
+                        be classified by this service.</p>
+
+                    <h4>Limits</h4>
+                    <p>A job can at most run for 2 hours and atmost 4000 sequences can be submitted.
+                        This should be enough for about 2500 sequences to be classified. Results will be stored for 2
+                        weeks. However, we recommend to download the results as they may be deleted due to the rare
+                        event of a power outage or server crash.</p>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Statistics</h3>
+                </div>
+                <table class="table table-striped">
+                    <tr>
+                        <td>Jobs completed in total</td>
+                        <td>{{ stats.job_count }}</td>
+                    </tr>
+                    <tr>
+                        <td>Sequences classified in total</td>
+                        <td>{{ stats.sequence_count }}</td>
+                    </tr>
+                    <tr>
+                        <td>Jobs completed in the last 24 hours</td>
+                        <td>{{ stats.job_count_in_day }}</td>
+                    </tr>
+                    <tr>
+                        <td>Sequences classified in the last 24 hours</td>
+                        <td>{{ stats.sequence_count_in_day }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

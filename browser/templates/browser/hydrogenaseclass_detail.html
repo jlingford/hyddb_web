@@ -1,0 +1,134 @@
+{% extends "common/base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    {{ block.super }} - {{ entry.name }}
+{% endblock %}
+
+{% block css %}
+    {{ block.super }}
+    <link href="{% static 'browser/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ entry.name }}-hydrogenase {% if entry.putative_class %}<small>Putative</small>{% endif %}</h1>
+
+<p class="text-muted">This entry was last updated at: {{ entry.updated_at }}</p>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Properties</div>
+    <table class="table">
+        <tr>
+            <td class="entry-property-name">Group</td>
+            <td>{{ entry.group|safe }}</td>
+        </tr>
+        <tr>
+            <td class="entry-property-name">Subgroup</td>
+            <td>{{ entry.subgroup|safe }}</td>
+        </tr>
+        <tr>
+            <td class="entry-property-name">Function</td>
+            <td>{{ entry.function|safe }}</td>
+        </tr>
+        <tr>
+            <td class="entry-property-name">Activity</td>
+            <td>{{ entry.activity|safe }}</td>
+        </tr>
+        <tr>
+            <td class="entry-property-name">Oxygen tolerance</td>
+            <td>{{ entry.oxygen_tolerance|safe }}</td>
+        </tr>
+        <tr>
+            <td class="entry-property-name">Localisation</td>
+            <td>{{ entry.localisation|safe }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Distribution</div>
+    <table class="table">
+        <tr>
+            <td class="entry-property-name">Ecosystem distribution</td>
+            <td>{{ entry.ecosystem_distribution|safe }}</td>
+        </tr>
+        <tr>
+            <td class="entry-property-name">Taxonomic distribution</td>
+            <td>{{ entry.taxonomic_distribution|safe }}</td>
+        </tr>
+    </table>
+    <div class="panel-body">
+        <img src="{{ entry.distribution_image.url }}" /></td>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Genetic Organisation</div>
+    <div class="panel-body">
+        {% for org in entry.geneticorganisation_set.all %}
+            <p>{{ org.description|safe }}</p>
+            <img class="genetic-organisation" src="{{ org.image.url }}" />
+            {% if not forloop.last %}
+            <hr />
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Architecture</div>
+    <table class="table">
+        <tr>
+            <td class="entry-property-name">Structures</td>
+            <td>
+                <ul class="list-unstyled">
+                {% for structure in entry.structure_set.all %}
+                    <li>
+                        <a href="{{ structure.pdb_url }}">{{ structure.pdb_id }}</a> ({{ structure.description|safe }})
+                    </li>
+                {% empty %}
+                None
+                {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="entry-property-name">Subunits</td>
+            <td>{{ entry.subunits }}</td>
+        </tr>
+        <tr>
+            <td class="entry-property-name">Subunit description</td>
+            <td>{{ entry.subunit_description|safe|default:"None" }}</td>
+        </tr>
+        <tr>
+            <td class="entry-property-name">Catalytic site</td>
+            <td>{{ entry.catalytic_site }}</td>
+        </tr>
+        <tr>
+            <td class="entry-property-name">FeS clusters</td>
+            <td>{{ entry.fes_clusters|safe|default:"Absent" }}</td>
+        </tr>
+    </table>
+</div>
+
+{% if entry.notes %}
+<div class="panel panel-warning">
+    <div class="panel-heading">Important Notes</div>
+    <div class="panel-body">
+        {{ entry.notes|safe }}
+    </div>
+</div>
+{% endif %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">Sequences in this class</div>
+    {% include 'common/table.html' with table=table %}
+</div>
+
+<h2>Literature</h2>
+
+{{ entry.literature|safe }}
+
+{% endblock %}

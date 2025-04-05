@@ -1,0 +1,8 @@
+Dear user,
+
+Your job {{ task_id }} completed successfully and you may view the results at the link below:
+
+http://services.birc.au.dk/hyddb{% url 'classifier:results' task_id=task_id %}
+
+Sincerely,
+HydDB Team

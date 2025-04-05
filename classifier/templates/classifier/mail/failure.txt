@@ -1,0 +1,8 @@
+Dear user,
+
+An error occurred when running the job {{task_id}}. To inspect the error, visit this link:
+
+http://services.birc.au.dk/hyddb{% url 'classifier:failure' task_id=task_id %}
+
+Sincerely,
+HydDB Team

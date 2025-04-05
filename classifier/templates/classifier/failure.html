@@ -1,0 +1,11 @@
+{% extends "common/base.html" %}
+
+{% block content %}
+<h1>Failed <small>{{ task.id }}</small></h1>
+
+<div class="alert alert-danger">
+An error occurred while attempting to run your job. Please check that your input is FASTA formatted. If the error persists, please
+contact the <a class="alert-link" href="mailto:das@birc.au.dk?subject=HydroClf Error: {{ task.id }}">administrator</a>.
+</div>
+
+{% endblock %}

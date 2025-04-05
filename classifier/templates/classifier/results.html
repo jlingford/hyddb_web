@@ -1,0 +1,67 @@
+{% extends "common/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Results <small>{{ task.id }}</small></h1>
+
+{% if form %}
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title">Subtype classification of [FeFe] Group A sequences</h3>
+    </div>
+    <div class="panel-body">
+        <p>The sequences shown below were predicted to belong to [FeFe] Group A, but they cannot be classified further into subtypes (A1, A2, A3 or A4) without providing the downstream protein sequence. We therefore encourage the user to input the downstream protein sequence for each entry below and then click the "Re-classify" button.</p>
+        <p>A new job will be submitted with the sequences for which the user provided a downstream protein sequence and a new list of results for these sequences will be provided when the classification has completed. If an e-mail address has been provided, mails will be sent following completion or failure.</p>
+        <p class="text-danger">If you do not need to know the subtype of the [FeFe] Group A sequences, you can skip this step.</p>
+        <hr/>
+        <div class="row">
+            {% crispy form %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if show_nonhydrogenase_warning %}
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h3 class="panel-title">Non-hydrogenase catalytic subunit sequences found!</h3>
+    </div>
+    <div class="panel-body">
+        <p>The classifier uses two different methods for detecting non-hydrogenase catalytic subunit sequences in the submitted data.</p>
+        <dl class="dl-horizontal">
+        <dt>Homology check</dt>
+        <dd>This check is always performed. Checks whether any sequences are very similar those on a curated list of hydrogenase catalytic subunit sequences.</dd>
+        <dt>Conserved-domain confirmation</dt>
+        <dd>This check is only performed if "Check sequences using CDD?" was checked by the user. If enabled, the sequences will be sent to CDD and the classifier will then check for specific domains encoding hydrogenase catalytic subunits in the results.</dd>
+        </dl>
+        <p>If a sequence does not encode a hydrogenase catalytic subunit, it will be marked as <span class="label label-danger">Non-hydrogenase</span>.</p>
+    </div>
+</div>
+{% endif %}
+
+{% if show_high_evalue_warning %}
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h3 class="panel-title">Re-run with CDD check recommended</h3>
+    </div>
+    <div class="panel-body">
+        Results marked in <span class="warning">yellow</span> signify that the result has an unusually high BLAST E-value indicating. This indicates the sequence might not encode a hydrogenase catalytic subunit. It is therefore recommended to perform a second classification with these sequences using the "Check sequences using CDD?" feature
+    </div>
+</div>
+{% endif %}
+
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <div class="btn-group pull-right">
+      <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Download <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="{% url 'classifier:download_csv' task_id=task.id %}">Comma-Separated Values (CSV)</a></li>
+      </ul>
+    </div>
+  </div>
+  {% include 'common/table.html' with table=table %}
+</div>
+{% endblock %}
