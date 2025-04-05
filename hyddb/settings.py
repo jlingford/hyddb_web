@@ -95,8 +95,10 @@ WSGI_APPLICATION = "hyddb.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "/db/db.sqlite3",
-        # "NAME": str(BASE_DIR.joinpath("db.sqlite3")), # for running locally
+        # "NAME": "/db/db.sqlite3",
+        "NAME": str(
+            BASE_DIR.joinpath("db.sqlite3")
+        ),  # for running locally - no-docker branch
     }
 }
 
