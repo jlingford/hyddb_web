@@ -10,8 +10,11 @@ RUN apt-get update && apt-get -y install libgl1-mesa-glx && \
     rm -rf /var/lib/apt/lists/*
 
 COPY environment_v2.yml environment_v2.yml
-RUN conda env create -q -f environment_v2.yml && \
+RUN conda upgrade -n base conda && \
+    conda env create -q -f environment_v2.yml && \
     conda clean -y -i -l -t -p
+
+RUN pip uninstall parso && pip install parso
 
 COPY . /code
 WORKDIR /code
