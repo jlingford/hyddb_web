@@ -9,8 +9,8 @@ RUN apt-get update && apt-get -y install libgl1-mesa-glx && \
     apt-get remove --purge && \
     rm -rf /var/lib/apt/lists/*
 
-COPY environment.yml environment.yml
-RUN conda env create -q -f environment.yml && \
+COPY environment_v2.yml environment_v2.yml
+RUN conda env create -q -f environment_v2.yml && \
     conda clean -y -i -l -t -p
 
 COPY . /code
