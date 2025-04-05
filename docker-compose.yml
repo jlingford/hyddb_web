@@ -1,0 +1,35 @@
+version: '2'
+services:
+  web: &base
+    build: .
+    image: dansondergaard/hyddb
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+      - /tmp/media:/media
+      - /tmp/db:/db
+      - /tmp/blastdb:/blastdb
+      - /tmp/static:/static
+    ports:
+      - "8000:8000"
+    links:
+      - redis
+      - rabbit
+    environment:
+      DEBUG: "true"
+      SECRET_KEY: "some-secret-key"
+      USE_CACHING: "false"
+      FORCE_SCRIPT_NAME: ""
+  celery:
+    <<: *base
+    command: celery -A hyddb.celery worker -l debug --concurrency=2 -Q celery
+    ports: []
+  celery_cdd:
+    <<: *base
+    command: celery -A hyddb.celery worker -l debug --concurrency=50 --pool=gevent -Q cdd
+    ports: []
+  rabbit:
+    image: rabbitmq
+    hostname: hyddb-rabbit
+  redis:
+    image: redis:latest

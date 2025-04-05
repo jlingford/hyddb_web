@@ -1,0 +1,61 @@
+{% extends "common/base.html" %}
+
+{% block js %}
+$(function () {
+    var intervalId = setInterval(function () {
+        $.getJSON('{% url 'classifier:status' task.id %}', function (data) {
+            $('#last-updated').text(new Date().toLocaleString());
+            $('#task-status').text(data['status'].toLowerCase());
+            if (data['status'] == 'SUCCESS') {
+                window.location = '{% url 'classifier:results' task.id %}';
+            } else if (data['status'] == 'FAILURE') {
+                window.location = '{% url 'classifier:failure' task.id %}';
+            }
+        });
+    }, 2000);
+});
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="alert alert-info">
+            <p>
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                Your job has been submitted! Detailed information is shown below.
+            </p>
+        </div>
+        {% include "classifier/citing.html" %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Please wait...</h3>
+            </div>
+            <table class="table">
+                <tr>
+                    <td class="text-right">ID</td>
+                    <td>{{ task.id }}</td>
+                </tr>
+                <tr>
+                    <td class="text-right">Last updated</td>
+                    <td id="last-updated">never</td>
+                </tr>
+                <tr>
+                    <td class="text-right">Status</td>
+                    <td id="task-status">unknown</td>
+                </tr>
+                <tr>
+                    <td class="text-right">Link to this page</td>
+                    <td>
+                        <a href="{% url 'classifier:wait' task.id %}">
+                            {% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ object.get_absolute_url }}{% url 'classifier:wait' task.id %}
+                        </a>
+                        <p>You may save or bookmark this link and return any time to check the status of your job.</p>
+                        <p>If you supplied your e-mail address you will receive an e-mail when the job has completed.</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

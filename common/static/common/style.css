@@ -1,0 +1,42 @@
+.container {
+    width: 90%;
+}
+
+table {
+    font-size: 0.9em;
+}
+
+.table-container th.asc:after {
+  content: '\0000a0\0025b2';
+}
+.table-container th.desc:after {
+  content: '\0000a0\0025bc';
+}
+
+nav {
+	margin-top: 40px;
+}
+
+form .alert-block {
+    margin: 0 15px 15px 15px;
+}
+
+footer {
+    margin: 20px 0 40px 0;
+}
+
+@media screen and (max-width: 991px){
+    .columns{
+        height: 200px;
+        overflow-y:scroll;
+    }
+}
+
+@media screen and (min-width: 992px){
+    .columns{
+        -moz-column-count:3; /* Firefox */
+        -webkit-column-count:3; /* Safari and Chrome */
+        column-count:3;
+        width: 600px;
+    }
+}

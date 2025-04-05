@@ -1,0 +1,20 @@
+FROM continuumio/miniconda3:4.4.10
+
+LABEL maintainer="Dan Søndergaard <das@birc.au.dk>"
+
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update && apt-get -y install libgl1-mesa-glx && \
+    apt-get remove --purge && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY environment.yml environment.yml
+RUN conda env create -q -f environment.yml && \
+    conda clean -y -i -l -t -p
+
+COPY . /code
+WORKDIR /code
+
+ENV PATH /opt/conda/envs/hyddb/bin:$PATH
+
+CMD ["gunicorn", "-b", "0.0.0.0", "hyddb.wsgi"]
