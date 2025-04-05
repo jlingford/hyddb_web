@@ -1,0 +1,23 @@
+name: hyddb
+channels:
+  - defaults
+  - biocore
+dependencies:
+  - python=3.5
+  - pip=9.*
+  - scikit-bio=0.5.1
+  - scikit-learn=0.17
+  - blast-plus=2.2.31
+  - gevent==1.2.2
+  - pip:
+      - requests==2.9.*
+      - celery==3.1.*
+      - redis==2.10.*
+      - gunicorn==19.4.*
+      - django==1.10.*
+      - django-bootstrap3==7.0.*
+      - django-crispy-forms==1.6.*
+      - django-filter==0.13
+      - django-tables2==1.2.*
+      - django-redis-cache==1.6.*
+      - parso==0.7.0
