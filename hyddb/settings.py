@@ -141,12 +141,16 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 # STATIC_URL = "/static/" # original
-STATIC_URL = os.path.join(BASE_DIR, "static")
-STATIC_ROOT = "/static"
+# STATIC_ROOT = "/static" # original
+# STATIC_URL = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = str(BASE_DIR.joinpath("static"))
+STATIC_URL = "/static/"
 
 # MEDIA_URL = "/media/" # original
-MEDIA_URL = os.path.join(BASE_DIR, "media")
-MEDIA_ROOT = "/media"
+# MEDIA_ROOT = "/media" # original
+# MEDIA_URL = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = str(BASE_DIR.joinpath("media"))
+MEDIA_URL = "/media/"
 
 # Crispy Forms
 CRISPY_TEMPLATE_PACK = "bootstrap3"
