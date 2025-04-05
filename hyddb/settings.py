@@ -14,6 +14,11 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 from pathlib import Path
 
+from django.conf.global_settings import DEBUG
+
+# import socket
+# socket.getaddrinfo("127.0.0.1", 8000)
+
 
 def str_to_bool(s):
     return True if s.lower() in ["true", "yes"] else False
@@ -30,9 +35,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "secret_key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str_to_bool(os.getenv("DEBUG", ""))
+# DEBUG = str_to_bool(os.getenv("DEBUG", "")) # original
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["*"] # original
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 # Admins
 ADMINS = []
@@ -99,6 +106,14 @@ DATABASES = {
         "NAME": str(
             BASE_DIR.joinpath("db.sqlite3")
         ),  # for running locally - no-docker branch
+        # "NAME": "hyddb",
+        "USER": "user",
+        "PASSWORD": "password",
+        # "HOST": "127.0.0.1",
+        # "HOST": "192.168.0.1",
+        "HOST": "",
+        # "PORT": "8000",
+        "PORT": "",
     }
 }
 
@@ -156,15 +171,18 @@ MEDIA_URL = "/media/"
 CRISPY_TEMPLATE_PACK = "bootstrap3"
 
 # Classifier
-BLASTDB = os.path.join("/blastdb", "blast.db")
-DOWNSTREAMDB = os.path.join("/blastdb", "downstream.db")
+# BLASTDB = os.path.join("/blastdb", "blast.db") # original
+# DOWNSTREAMDB = os.path.join("/blastdb", "downstream.db") # original
+BLASTDB = str(BASE_DIR.joinpath("blast.db"))
+DOWNSTREAMDB = str(BASE_DIR.joinpath("downstream.db"))
 
 # Subdirectory
 USE_X_FORWARDED_HOST = str_to_bool(os.getenv("USE_X_FORWARDED_HOST", "True"))
 
-FORCE_SCRIPT_NAME = os.getenv("FORCE_SCRIPT_NAME", "/hyddb/")
+# FORCE_SCRIPT_NAME = os.getenv("FORCE_SCRIPT_NAME", "/hyddb/") # original, is forcing url to be "hyddb"
 
-_prefix = FORCE_SCRIPT_NAME or ""
+# _prefix = FORCE_SCRIPT_NAME or ""  # original
+_prefix = ""
 MEDIA_URL = _prefix + MEDIA_URL
 STATIC_URL = _prefix + STATIC_URL
 
