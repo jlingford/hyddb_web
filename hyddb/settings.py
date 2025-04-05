@@ -10,15 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import os
 from pathlib import Path
 
 
 def str_to_bool(s):
     return True if s.lower() in ["true", "yes"] else False
 
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
 
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -67,7 +66,8 @@ MIDDLEWARE_CLASSES = [
     "django.middleware.security.SecurityMiddleware",
 ]
 
-ROOT_URLCONF = "hyddb.urls"
+ROOT_URLCONF = "hyddb.urls"  # original
+# ROOT_URLCONF = ""
 
 TEMPLATES = [
     {
@@ -140,10 +140,12 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = "/static/"
+# STATIC_URL = "/static/" # original
+STATIC_URL = os.path.join(BASE_DIR, "static")
 STATIC_ROOT = "/static"
 
-MEDIA_URL = "/media/"
+# MEDIA_URL = "/media/" # original
+MEDIA_URL = os.path.join(BASE_DIR, "media")
 MEDIA_ROOT = "/media"
 
 # Crispy Forms
@@ -165,8 +167,45 @@ STATIC_URL = _prefix + STATIC_URL
 # Email
 SERVER_EMAIL = "noreply@services.birc.au.dk"
 
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "handlers": {
+#         "console": {
+#             "class": "logging.StreamHandler",
+#         },
+#     },
+#     "root": {
+#         "handlers": ["console"],
+#         "level": "WARNING",
+#     },
+# }
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+            "propagate": False,
+        },
+    },
+}
+
 if DEBUG:
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-else:
-    EMAIL_HOST = os.getenv("EMAIL_HOST", "")
-    EMAIL_PORT = int(os.getenv("EMAIL_PORT", "25"))
+    # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    for logger in LOGGING["loggers"]:
+        LOGGING["loggers"][logger]["handlers"] = ["console"]
+# else:
+#     EMAIL_HOST = os.getenv("EMAIL_HOST", "")
+#     EMAIL_PORT = int(os.getenv("EMAIL_PORT", "25"))
