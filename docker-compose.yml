@@ -1,9 +1,9 @@
-version: '2'
+version: "2"
 services:
   web: &base
     build: .
-    image: dansondergaard/hyddb
-    command: python manage.py runserver 0.0.0.0:8000
+    image: hyddb_v1_original
+    command: python manage.py runserver 127.0.0.1:8000
     volumes:
       - .:/code
       - /tmp/media:/media
