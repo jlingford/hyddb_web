@@ -9,7 +9,8 @@ RUN apt-get update && apt-get -y install libgl1-mesa-glx && \
     apt-get remove --purge && \
     rm -rf /var/lib/apt/lists/*
 
-COPY environment_v2.yml environment_v2.yml
+COPY environment_v3.yml environment_v3.yml
+COPY pip_requirements.txt pip_requirements.txt
 RUN conda upgrade -n base conda && \
     conda env create -q -f environment_v2.yml && \
     conda clean -y -i -l -t -p
