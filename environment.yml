@@ -1,4 +1,4 @@
-name: hyddb
+name: hyddb_env1
 channels:
   - defaults
   - biocore

@@ -38,8 +38,8 @@ SECRET_KEY = os.getenv("SECRET_KEY", "secret_key")
 # DEBUG = str_to_bool(os.getenv("DEBUG", "")) # original
 DEBUG = True
 
-# ALLOWED_HOSTS = ["*"] # original
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["*"]  # original
+# ALLOWED_HOSTS = ["127.0.0.1"]  # NOTE: new
 
 # Admins
 ADMINS = []
@@ -75,6 +75,18 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = "hyddb.urls"  # original
 # ROOT_URLCONF = ""
+# CELERY_BROKER_URL = "amqp://localhost"  # NOTE: added as test
+CELERY_BROKER_URL = "amqp://guest:guest@localhost:5672//"  # NOTE: added as test
+# CELERY_BROKER_URL = "amqp://127.0.0.1:8000//"  # NOTE: added as test
+# CELERY_BROKER_URL = "amqp://guest:guest@172.17.0.2:5672//"  # NOTE: added as test
+# CELERY_BROKER_URL = "amqp://0.0.0.0:5672//"  # NOTE: added as test
+# CELERY_BROKER_URL = "amqp://guest:guest@rabbitmq:5672//"  # NOTE: added as test
+
+# NOTE: new Celery settings
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+
 
 TEMPLATES = [
     {
