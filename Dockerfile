@@ -21,7 +21,7 @@ RUN conda env create -f environment.yml
 RUN echo "conda activate hyddb" >> ~/.bashrc
 SHELL ["/bin/bash", "--login", "-c"]
 
-# NOTE: redundant?
+# NOTE: redundant? haven't tested
 ENV PATH=/opt/conda/envs/hyddb/bin:$PATH
 
 # need to downgrade parso to work with python 3.5 since conda installs wrong version
