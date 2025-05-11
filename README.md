@@ -1,5 +1,7 @@
 # HydDB
 
+![HydDB website screenshot](./banner_image_hyddb.png)
+
 The hydrogenase database (HydDB) provides information pages for different groups of hydrogenases, and a sequence classifier tool for predicting the putative functions of input hydrogenase sequences.
 
 The HydDB is described in Søndergaard1, Pedersen, & Chris Greening (2016) *Scientific Reports* (<https://doi.org/10.1038/srep34212>)
@@ -7,7 +9,9 @@ The HydDB is described in Søndergaard1, Pedersen, & Chris Greening (2016) *Scie
 ## Installing and hosting the HydDB locally
 
 You can use Docker to host the website locally on your own machine.
-Make sure you have Docker installed and is running (this may require running `systemctl start docker`).
+We recommend this if you expect to be running a large number of sequences through the classifier tool.
+
+**Requirements**: make sure you have Docker installed and is running (this may require running `systemctl start docker`).
 
 ### Option 1: Pull the Docker image
 
@@ -60,6 +64,21 @@ docker compose run web python manage.py trainupstream data
 The website should now be accessible locally at `http://0.0.0.0:8000/` or `http://127.0.0.1:8000/`.
 Open the address in your internet browser (Firefox works the best in my opinion).
 Happy hydrogenase hunting!
+
+## Limitations and areas for improvement
+
+### Limitations of the sequence classifier
+
+HydDB is unable to accurately check whether uploaded sequences correspond to hydrogenases or not. Instead, it is well-suited for functionally-predictive classification of known hydrogenases into different subgroups. Please ensure that all sequences that you upload correspond to catalytic subunits of hydrogenases (e.g. using conserved domain database and phylogenetic trees). Sequences that do not encode catalytic subunits of hydrogenases will still be classified, but the result may be wrong.
+
+### Updating the HydDB
+
+The HydDB was released in 2016, so it is quite old at this point.
+We are actively working on a HydDB v2.0 to provide greater coverage of hydrogenase phylogenetic diversity and develop a better classifier tool.
+In the meantime, we are providing the original code for the HydDB v1.0.
+The code has not been actively maintained and still runs on Python 3.5.
+This will likely result in issues when trying to build the Docker image from scratch at some point in the future as more of the conda environment dependencies become outdated.
+If there are any issues, please open a new issue on this GitHub page.
 
 ## Citation
 
