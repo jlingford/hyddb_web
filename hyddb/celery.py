@@ -1,3 +1,4 @@
+from __future__ import absolute_import, unicode_literals  # new
 import os
 from datetime import timedelta
 
@@ -17,6 +18,7 @@ app = Celery(
     # broker="amqp://localhost",  # NOTE: changed to try fix classifier
     backend="redis://redis",
 )
+
 
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 

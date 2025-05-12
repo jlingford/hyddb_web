@@ -76,6 +76,7 @@ MIDDLEWARE_CLASSES = [
 ROOT_URLCONF = "hyddb.urls"  # original
 # ROOT_URLCONF = ""
 # CELERY_BROKER_URL = "amqp://localhost"  # NOTE: added as test
+# CELERY_BROKER_URL = "amqp://localhost:5672"  # NOTE: added as test
 CELERY_BROKER_URL = "amqp://guest:guest@localhost:5672//"  # NOTE: added as test
 # CELERY_BROKER_URL = "amqp://127.0.0.1:8000//"  # NOTE: added as test
 # CELERY_BROKER_URL = "amqp://guest:guest@172.17.0.2:5672//"  # NOTE: added as test
