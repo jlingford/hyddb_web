@@ -71,8 +71,8 @@ class BLASTWrapper(object):
                 "-dbtype",
                 "prot",
                 "-out",
-                # os.path.basename(self.db),  # CHANGED
-                self.db,
+                os.path.basename(self.db),  # CHANGED - no-docker branch
+                # self.db,
                 "-title",
                 "blast.db",
             ]

@@ -10,15 +10,19 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import os
 from pathlib import Path
+
+from django.conf.global_settings import DEBUG
+
+# import socket
+# socket.getaddrinfo("127.0.0.1", 8000)
 
 
 def str_to_bool(s):
     return True if s.lower() in ["true", "yes"] else False
 
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
 
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,9 +35,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "secret_key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str_to_bool(os.getenv("DEBUG", ""))
+# DEBUG = str_to_bool(os.getenv("DEBUG", "")) # original
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["*"] # original
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 # Admins
 ADMINS = []
@@ -67,7 +73,8 @@ MIDDLEWARE_CLASSES = [
     "django.middleware.security.SecurityMiddleware",
 ]
 
-ROOT_URLCONF = "hyddb.urls"
+ROOT_URLCONF = "hyddb.urls"  # original
+# ROOT_URLCONF = ""
 
 TEMPLATES = [
     {
@@ -95,8 +102,18 @@ WSGI_APPLICATION = "hyddb.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "/db/db.sqlite3",
-        # "NAME": str(BASE_DIR.joinpath("db.sqlite3")), # for running locally
+        # "NAME": "/db/db.sqlite3",
+        "NAME": str(
+            BASE_DIR.joinpath("db.sqlite3")
+        ),  # for running locally - no-docker branch
+        # "NAME": "hyddb",
+        "USER": "user",
+        "PASSWORD": "password",
+        # "HOST": "127.0.0.1",
+        # "HOST": "192.168.0.1",
+        "HOST": "",
+        # "PORT": "8000",
+        "PORT": "",
     }
 }
 
@@ -138,33 +155,79 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+# STATIC_URL = "/static/" # original
+# STATIC_ROOT = "/static" # original
+# STATIC_URL = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = str(BASE_DIR.joinpath("static"))
 STATIC_URL = "/static/"
-STATIC_ROOT = "/static"
 
+# MEDIA_URL = "/media/" # original
+# MEDIA_ROOT = "/media" # original
+# MEDIA_URL = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = str(BASE_DIR.joinpath("media"))
 MEDIA_URL = "/media/"
-MEDIA_ROOT = "/media"
 
 # Crispy Forms
 CRISPY_TEMPLATE_PACK = "bootstrap3"
 
 # Classifier
-BLASTDB = os.path.join("/blastdb", "blast.db")
-DOWNSTREAMDB = os.path.join("/blastdb", "downstream.db")
+# BLASTDB = os.path.join("/blastdb", "blast.db") # original
+# DOWNSTREAMDB = os.path.join("/blastdb", "downstream.db") # original
+BLASTDB = str(BASE_DIR.joinpath("blast.db"))
+DOWNSTREAMDB = str(BASE_DIR.joinpath("downstream.db"))
 
 # Subdirectory
 USE_X_FORWARDED_HOST = str_to_bool(os.getenv("USE_X_FORWARDED_HOST", "True"))
 
-FORCE_SCRIPT_NAME = os.getenv("FORCE_SCRIPT_NAME", "/hyddb/")
+# FORCE_SCRIPT_NAME = os.getenv("FORCE_SCRIPT_NAME", "/hyddb/") # original, is forcing url to be "hyddb"
 
-_prefix = FORCE_SCRIPT_NAME or ""
+# _prefix = FORCE_SCRIPT_NAME or ""  # original
+_prefix = ""
 MEDIA_URL = _prefix + MEDIA_URL
 STATIC_URL = _prefix + STATIC_URL
 
 # Email
 SERVER_EMAIL = "noreply@services.birc.au.dk"
 
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "handlers": {
+#         "console": {
+#             "class": "logging.StreamHandler",
+#         },
+#     },
+#     "root": {
+#         "handlers": ["console"],
+#         "level": "WARNING",
+#     },
+# }
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+            "propagate": False,
+        },
+    },
+}
+
 if DEBUG:
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-else:
-    EMAIL_HOST = os.getenv("EMAIL_HOST", "")
-    EMAIL_PORT = int(os.getenv("EMAIL_PORT", "25"))
+    # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+    for logger in LOGGING["loggers"]:
+        LOGGING["loggers"][logger]["handlers"] = ["console"]
+# else:
+#     EMAIL_HOST = os.getenv("EMAIL_HOST", "")
+#     EMAIL_PORT = int(os.getenv("EMAIL_PORT", "25"))
