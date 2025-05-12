@@ -34,29 +34,20 @@ docker build -t jameslingford/hyddb-website .
 To run the web service, you may want to first modify the environment variables in
 `docker-compose.yml` to fit your development environment (such as the locations of the volume directories).
 
-First, run:
+Run the following commands in order:
 
 ```bash
 docker compose up -d
-```
-
-Second, run the database migrations:
-
-```bash
 docker compose run web python manage.py migrate
-```
-
-Third, load the fixtures:
-
-```bash
 docker compose run web python manage.py loaddata hydrogenaseclass hydrogenasesequence
-```
-
-Fourth, train the two sequence classifiers:
-
-```bash
 docker compose run web python manage.py train
 docker compose run web python manage.py trainupstream data
+```
+
+Or alternatively, run all of these commands from the script `run_docker_compose.sh`
+
+```bash
+./run_docker_compose.sh
 ```
 
 ### Viewing the website locally
