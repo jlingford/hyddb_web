@@ -1,0 +1,11 @@
+[
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 1,
+        "fields": {
+            "hydrogenase_class": "[Fe]",
+            "description": "hahahah",
+            "image": "./organisation/Fe.png"
+        }
+    }
+]

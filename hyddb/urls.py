@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.conf.urls import include, url
 
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 admin.site.site_header = "HydDB Administration"  # original
 admin.site.site_title = "HydDB"  # original
@@ -38,6 +39,9 @@ urlpatterns = [
     url(r"^", include("classifier.urls", namespace="classifier")),
     url(r"^", include("browser.urls", namespace="browser")),
     url(r"^admin/", admin.site.urls),
+    # url(
+    #     r"^info/", TemplateView.as_view(template_name="fe.html"), name="fe"
+    # ),  # NOTE: new addition
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:

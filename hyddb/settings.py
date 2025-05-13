@@ -92,7 +92,10 @@ CELERY_RESULT_SERIALIZER = "json"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            # "./class",
+            "./browser/templates/browser"
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -102,6 +105,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.request",
             ],
+            # "file_charset": "iso-8859-1",  # NOTE: added to fix utf-8 encoding error with new html pages
         },
     },
 ]

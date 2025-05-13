@@ -14,7 +14,7 @@
 # conda activate hyddb_env1
 
 python manage.py migrate
-python manage.py loaddata hydrogenaseclass hydrogenasesequence
+python manage.py loaddata hydrogenaseclass hydrogenasesequence geneticorganisation
 python manage.py train
 python manage.py trainupstream data
 python manage.py runserver 0.0.0.0:8000
