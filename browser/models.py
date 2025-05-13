@@ -188,7 +188,7 @@ class GeneticOrganisation(BaseModel):
     # )
 
     description = models.CharField(max_length=512, null=True)
-    image = models.FileField()
+    image = models.FileField(null=True, upload_to="organisation/")
 
     def __str__(self):
         return self.description
