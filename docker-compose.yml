@@ -5,7 +5,7 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
-      - ./tmp/media:/media
+      - ./media:/media
       - ./tmp/db:/db
       - ./tmp/blastdb:/blastdb
       - ./tmp/static:/static
