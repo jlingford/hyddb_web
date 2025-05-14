@@ -93,6 +93,14 @@ If there are any issues, please open a new issue on this GitHub page.
 
 If you use the HydDB in your research, please cite the following:
 
-```
-@article{S_ndergaard_2016, title={HydDB: A web tool for hydrogenase classification and analysis}, volume={6}, ISSN={2045-2322}, url={http://dx.doi.org/10.1038/srep34212}, DOI={10.1038/srep34212}, number={1}, journal={Scientific Reports}, publisher={Springer Science and Business Media LLC}, author={Søndergaard, Dan and Pedersen, Christian N. S. and Greening, Chris}, year={2016}, month=sep }
+```bibtex
+
+@article{Søndergaard_2016,
+    author={Søndergaard, Dan and Pedersen, Christian N. S. and Greening, Chris},
+    title={HydDB: A web tool for hydrogenase classification and analysis},
+    year={2016},
+    journal={Scientific Reports},
+    DOI={10.1038/srep34212},
+    }
+
 ```
