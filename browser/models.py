@@ -145,7 +145,7 @@ class HydrogenaseClass(BaseModel):
     # Distribution
     ecosystem_distribution = models.CharField(max_length=512)
     taxonomic_distribution = models.CharField(max_length=512)
-    distribution_image = models.FileField(null=True, upload_to="distribution/")
+    distribution_image = models.FileField(null=True, upload_to="")
 
     # Architecture
     subunits = models.CharField(max_length=128)
@@ -180,15 +180,8 @@ class GeneticOrganisation(BaseModel):
         # on_delete=models.CASCADE,  # NOTE: added this to stop error, is needed for Django v2
     )
 
-    # hydrogenase_class = models.ForeignKey(
-    #     "HydrogenaseClass",
-    #     default=None,
-    #     db_index=True,
-    #     # on_delete=models.CASCADE,  # NOTE: added this to stop error, is needed for Django v2
-    # )
-
     description = models.CharField(max_length=512, null=True)
-    image = models.FileField()
+    image = models.FileField(null=True, upload_to="")
 
     def __str__(self):
         return self.description

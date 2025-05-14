@@ -399,7 +399,7 @@
         "model": "browser.geneticorganisation",
         "pk": 45,
         "fields": {
-            "hydrogenase_class": "[NiFe] Group 4c",
+            "hydrogenase_class": "[NiFe] Group 4d",
             "description": "e.g. Pyrococcus furiosus (WP_011012581.1):",
             "image": "./organisation/nife4d.png"
         }
