@@ -18,7 +18,7 @@ We recommend this if you expect to be running a large number of sequences throug
 The first option is to pull the image from Docker Hub:
 
 ```bash
-docker image pull jameslingford/hyddb-website:latest
+docker image pull jameslingford/hyddb-website:dev2
 ```
 
 ### Option 2: Build and compose the Docker image from scratch
