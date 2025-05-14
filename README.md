@@ -31,10 +31,20 @@ cd hyddb_web
 docker build -t jameslingford/hyddb-website .
 ```
 
+### Running the website locally
+
+Docker Compose is used to get the website up and running. This requires downloading the `docker-compose.yml` file from this repository.
+Either download this file separately, or clone the whole repo:
+
+```bash
+git clone https://github.com/jlingford/hyddb_web
+cd hyddb_web
+```
+
 To run the web service, you may want to first modify the environment variables in
 `docker-compose.yml` to fit your development environment (such as the locations of the volume directories).
 
-Run the following commands in order:
+Run the following commands in order, being sure to run `docker compose up -d` in the same directory as the `docker-compose.yml` file:
 
 ```bash
 docker compose up -d
@@ -44,7 +54,7 @@ docker compose run web python manage.py train
 docker compose run web python manage.py trainupstream data
 ```
 
-Or alternatively, run all of these commands from the script `run_docker_compose.sh`
+Or alternatively, run all of these commands from the script `run_docker_compose.sh`:
 
 ```bash
 ./run_docker_compose.sh
@@ -61,6 +71,14 @@ Happy hydrogenase hunting!
 ### Limitations of the sequence classifier
 
 HydDB is unable to accurately check whether uploaded sequences correspond to hydrogenases or not. Instead, it is well-suited for functionally-predictive classification of known hydrogenases into different subgroups. Please ensure that all sequences that you upload correspond to catalytic subunits of hydrogenases (e.g. using conserved domain database and phylogenetic trees). Sequences that do not encode catalytic subunits of hydrogenases will still be classified, but the result may be wrong.
+
+### Missing protein databank (PDB) information
+
+Since migrating the HydDB from its original server, the information tables for protein structures were lost.
+These included PDB codes for different hydrogenases, including details of protein structure resolution and host species.
+Therefore, all "Structures" tables (under the "Architecture" section of each "Information Page" entry) says "None".
+Since it would be quite laborious to add this PDB info back in, a quick workaround to find a list of PDBs for each hydrogenase will be to search the [UniProt](https://www.uniprot.org/id-mapping) database with the NCBI RefSeq accession ID's provided in the HydDB.
+UniProt entries contain up-to-date PDB's and AlphaFold2 models.
 
 ### Updating the HydDB
 
