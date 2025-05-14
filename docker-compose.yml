@@ -1,7 +1,7 @@
 services:
   web: &base
     build: .
-    image: jameslingford/hyddb-website:dev1
+    image: jameslingford/hyddb-website:dev2
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
