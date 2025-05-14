@@ -15,7 +15,7 @@
 
 python manage.py migrate
 python manage.py loaddata hydrogenaseclass hydrogenasesequence geneticorganisation
-python manage.py makemigrations browser
+python manage.py makemigrations
 python manage.py migrate browser
 python manage.py loaddata hydrogenaseclass hydrogenasesequence geneticorganisation
 python manage.py train
