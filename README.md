@@ -48,8 +48,9 @@ Run the following commands in order, being sure to run `docker compose up -d` in
 
 ```bash
 docker compose up -d
+docker compose run web python manage.py makemigrations
 docker compose run web python manage.py migrate
-docker compose run web python manage.py loaddata hydrogenaseclass hydrogenasesequence
+docker compose run web python manage.py loaddata hydrogenaseclass hydrogenasesequence geneticorganisation
 docker compose run web python manage.py train
 docker compose run web python manage.py trainupstream data
 ```
