@@ -15,7 +15,7 @@ services:
       - redis
       - rabbit
     environment:
-      DEBUG: "False"
+      DEBUG: "True"
       SECRET_KEY: "some-secret-key"
       USE_CACHING: "false"
       FORCE_SCRIPT_NAME: ""
