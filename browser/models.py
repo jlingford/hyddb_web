@@ -194,18 +194,6 @@ class GeneticOrganisation(BaseModel):
         return self.description
 
 
-class GeneticOrganisationDetail(BaseModel):
-    genetic_organisation = models.ForeignKey(
-        GeneticOrganisation,
-    )
-
-    description = models.CharField(max_length=512, null=True)
-    image = models.FileField(upload_to="organisation/")
-
-    def __str__(self):
-        return self.description
-
-
 class Structure(BaseModel):
     hydrogenase_class = models.ForeignKey(
         HydrogenaseClass,
