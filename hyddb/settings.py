@@ -10,8 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+
 def str_to_bool(s):
-    return True if s.lower() in ['true', 'yes'] else False
+    return True if s.lower() in ["true", "yes"] else False
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -23,12 +25,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', 'secret_key')
+SECRET_KEY = os.getenv("SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str_to_bool(os.getenv('DEBUG', ''))
+DEBUG = str_to_bool(os.getenv("DEBUG", "False"))
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 # Admins
 ADMINS = []
@@ -36,91 +38,91 @@ ADMINS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django_filters',
-    'django_tables2',
-    'crispy_forms',
-    'bootstrap3',
-    'common',
-    'browser',
-    'classifier',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django_filters",
+    "django_tables2",
+    "crispy_forms",
+    "bootstrap3",
+    "common",
+    "browser",
+    "classifier",
 )
 
 MIDDLEWARE_CLASSES = [
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.auth.middleware.SessionAuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
 ]
 
-ROOT_URLCONF = 'hyddb.urls'
+ROOT_URLCONF = "hyddb.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.request",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'hyddb.wsgi.application'
+WSGI_APPLICATION = "hyddb.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/db/db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "/db/db.sqlite3",
     }
 }
 
 # Caching
 # https://docs.djangoproject.com/en/1.8/topics/cache/
 
-USE_CACHING = str_to_bool(os.getenv('USE_CACHING', 'True'))
+USE_CACHING = str_to_bool(os.getenv("USE_CACHING", "True"))
 if USE_CACHING:
     CACHES = {
-        'default': {
-            'BACKEND': 'redis_cache.RedisCache',
-            'LOCATION': 'redis:6379',
+        "default": {
+            "BACKEND": "redis_cache.RedisCache",
+            "LOCATION": "redis:6379",
         }
     }
 else:
     CACHES = {
-        'default': {
-            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        "default": {
+            "BACKEND": "django.core.cache.backends.dummy.DummyCache",
         }
     }
 
 # Sessions
-SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'Europe/Copenhagen'
+TIME_ZONE = "Europe/Copenhagen"
 
 USE_I18N = False
 
@@ -132,33 +134,33 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/static'
+STATIC_URL = "/static/"
+STATIC_ROOT = "/static"
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = '/media'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = "/media"
 
 # Crispy Forms
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = "bootstrap3"
 
 # Classifier
-BLASTDB = os.path.join('/blastdb', 'blast.db')
-DOWNSTREAMDB = os.path.join('/blastdb', 'downstream.db')
+BLASTDB = os.path.join("/blastdb", "blast.db")
+DOWNSTREAMDB = os.path.join("/blastdb", "downstream.db")
 
 # Subdirectory
-USE_X_FORWARDED_HOST = str_to_bool(os.getenv('USE_X_FORWARDED_HOST', 'True'))
+USE_X_FORWARDED_HOST = str_to_bool(os.getenv("USE_X_FORWARDED_HOST", "True"))
 
-FORCE_SCRIPT_NAME = os.getenv('FORCE_SCRIPT_NAME', '/hyddb/')
+FORCE_SCRIPT_NAME = os.getenv("FORCE_SCRIPT_NAME", "/hyddb/")
 
-_prefix = (FORCE_SCRIPT_NAME or "")
+_prefix = FORCE_SCRIPT_NAME or ""
 MEDIA_URL = _prefix + MEDIA_URL
 STATIC_URL = _prefix + STATIC_URL
 
 # Email
-SERVER_EMAIL = 'noreply@services.birc.au.dk'
+SERVER_EMAIL = "noreply@services.birc.au.dk"
 
 if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 else:
-    EMAIL_HOST = os.getenv('EMAIL_HOST', '')
-    EMAIL_PORT = int(os.getenv('EMAIL_PORT', '25'))
+    EMAIL_HOST = os.getenv("EMAIL_HOST", "")
+    EMAIL_PORT = int(os.getenv("EMAIL_PORT", "25"))
