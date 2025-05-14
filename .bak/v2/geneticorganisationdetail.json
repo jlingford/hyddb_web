@@ -1,0 +1,20 @@
+[
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 1,
+        "fields": {
+            "genetic_organisation": 2,
+            "description": "Organisation 2: Trichomonas vaginalis (WP_001330775.1):",
+            "image": "./organisation/fefea1ii.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 2,
+        "fields": {
+            "genetic_organisation": 2,
+            "description": "Organisation 3: Clostridium pasteurianum (WP_004455619.1):",
+            "image": "./organisation/fefea1iii.png"
+        }
+    }
+]
