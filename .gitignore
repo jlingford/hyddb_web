@@ -71,3 +71,6 @@ db.sqlite3
 
 # deleted files
 .bak/
+
+# ignore migration file 
+0001_initial.py
