@@ -13,14 +13,440 @@
         "pk": 2,
         "fields": {
             "hydrogenase_class": "[FeFe] Group A1",
-            "description": [
-                "Organisation 1: Chlamydomonas reinhardtii (WP_001693376.1):",
-                "Organisation 2: Trichomonas vaginalis (WP_001330775.1):"
-            ],
-            "image": [
-                "./organisation/fefea1i.png",
-                "./organisation/fefea1ii.png"
-            ]
+            "description": "Organisation 1: Chlamydomonas reinhardtii (WP_001693376.1):",
+            "image": "./organisation/fefea1i.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 3,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group A1",
+            "description": "Organisation 2: Trichomonas vaginalis (WP_001330775.1):",
+            "image": "./organisation/fefea1ii.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 4,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group A1",
+            "description": "Organisation 3: Clostridium pasteurianum (WP_004455619.1):",
+            "image": "./organisation/fefea1iii.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 5,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group A1",
+            "description": "Organisation 4: Desulfovibrio vulgaris (WP_010939057.1):",
+            "image": "./organisation/fefea1iv.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 6,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group A1",
+            "description": "Organisation 5: Shewanella oneidensis (WP_011073665.1):",
+            "image": "./organisation/fefea1v.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 7,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group A1",
+            "description": "Organisation 6: Trichomonas vaginalis (XP_001580488.1):",
+            "image": "./organisation/fefea1vi.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 8,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group A2",
+            "description": "e.g. Desulfovibrio vulgaris (WP_010939059.1):",
+            "image": "./organisation/fefea2.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 9,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group A3",
+            "description": "Organisation 1: Thermotoga maritima (WP_004081677.1):",
+            "image": "./organisation/fefea3i.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 10,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group A3",
+            "description": "Organisation 2: Desulfovibrio fructosovorans (WP_005990603.1):",
+            "image": "./organisation/fefea3ii.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 11,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group A4",
+            "description": "Organisation 1: Clostridium pasteurianum (WP_023975234.1):",
+            "image": "./organisation/fefea4i.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 12,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group A4",
+            "description": "Organisation 2: Clostridium autoethanogenum (WP_023162857.1):",
+            "image": "./organisation/fefea4ii.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 13,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group B",
+            "description": "Organisation 1: Clostridium pasteurianum (WP_023976023.1):",
+            "image": "./organisation/fefebi.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 14,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group B",
+            "description": "Organisation 2: Clostridium carboxyidovorans (WP_007061531.1):",
+            "image": "./organisation/fefebii.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 15,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group C1",
+            "description": "e.g. Acetobacterium woodii (WP_014357055.1):",
+            "image": "./organisation/fefec1.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 16,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group C2",
+            "description": "Organisation 1: Clostridium lundense (WP_027626440.1):",
+            "image": "./organisation/fefec2i.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 17,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group C2",
+            "description": "Organisation 2: Desulfosporosinus orientis (WP_014186347.1):",
+            "image": "./organisation/fefec2ii.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 18,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group C3",
+            "description": "Organisation 1: Ruminococcus albus (WP_002849014.1):",
+            "image": "./organisation/fefec3i.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 19,
+        "fields": {
+            "hydrogenase_class": "[FeFe] Group C3",
+            "description": "Organisation 2: Geobacter sulfurreducens (WP_014552161.1):",
+            "image": "./organisation/fefec3ii.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 20,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 1a",
+            "description": "e.g. Desulfovibrio vulgaris (WP_010939204.1):",
+            "image": "./organisation/nife1a.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 21,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 1b",
+            "description": "e.g. Wolinella succinogenes (WP_011139497.1):",
+            "image": "./organisation/nife1b.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 22,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 1c",
+            "description": "e.g. Escherichia coli (WP_021568771.1):",
+            "image": "./organisation/nife1c.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 23,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 1d",
+            "description": "e.g. Escherichia coli (WP_021522685.1):",
+            "image": "./organisation/nife1d.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 24,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 1e",
+            "description": "e.g. Allochromatium vinosum (WP_012971230.1):",
+            "image": "./organisation/nife1e.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 25,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 1f",
+            "description": "e.g. Geobacter sulfurreducens (WP_010940798.1):",
+            "image": "./organisation/nife1f.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 26,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 1g",
+            "description": "e.g. Thermoproteus neutrophilus (WP_012349775.1):",
+            "image": "./organisation/nife1g.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 27,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 1g",
+            "description": "e.g. Thermoproteus neutrophilus (WP_012349775.1):",
+            "image": "./organisation/nife1g-1.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 28,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 1h",
+            "description": "e.g. Mycobacterium smegmatis (WP_003893634.1):",
+            "image": "./organisation/nife1h.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 29,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 1i",
+            "description": "e.g. Eggerthella lenta (WP_009304598.1):",
+            "image": "./organisation/nife1i.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 30,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 1j",
+            "description": "e.g. Archaeoglobus fulgidus (WP_010878877.1):",
+            "image": "./organisation/nife1j.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 31,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 1k",
+            "description": "e.g. Methanosarcina barkeri (WP_011306827.1):",
+            "image": "./organisation/nife1k.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 32,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 2a",
+            "description": "e.g. Mycobacterium smegmatis (WP_003893634.1):",
+            "image": "./organisation/nife2a.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 33,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 2b",
+            "description": "e.g. Ralstonia eutropha (WP_011153946.1):",
+            "image": "./organisation/nife2b.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 34,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 2c",
+            "description": "e.g. Magnetospirillum magneticum (WP_011383527.1):",
+            "image": "./organisation/nife2c.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 35,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 2d",
+            "description": "e.g. Aquifex aeolicus (WP_010880487.1):",
+            "image": "./organisation/nife2d.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 36,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 2e",
+            "description": "e.g. Metallosphaera sedula (WP_012020882.1):",
+            "image": "./organisation/nife2e.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 37,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 3a",
+            "description": "e.g. Methanothermobacter marburgensis (WP_013296467.1):",
+            "image": "./organisation/nife3a.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 38,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 3b",
+            "description": "e.g. Pyrococcus furiosus (WP_011012029.1):",
+            "image": "./organisation/nife3b.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 39,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 3c",
+            "description": "e.g. Methanothermobacter marburgensis (WP_013296307.1):",
+            "image": "./organisation/nife3c.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 40,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 3d",
+            "description": "e.g. Ralstonia eutropha (WP_011154013.1):",
+            "image": "./organisation/nife3d.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 41,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 4a",
+            "description": "Organisation 1: Escherichia coli hyc operon (WP_014639275.1):",
+            "image": "./organisation/nife4a1.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 42,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 4a",
+            "description": "Organisation 2: Escherichia coli hyf operon (WP_014641051.1):",
+            "image": "./organisation/nife4a2.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 43,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 4b",
+            "description": "e.g. Pyrococcus abyssi (WP_010868591.1):",
+            "image": "./organisation/nife4b.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 44,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 4c",
+            "description": "e.g. Carboxydothermus hydrogenoformans (WP_011344721.1):",
+            "image": "./organisation/nife4c.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 45,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 4c",
+            "description": "e.g. Pyrococcus furiosus (WP_011012581.1):",
+            "image": "./organisation/nife4d.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 46,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 4e",
+            "description": "e.g. Methanosarcina barkeri (WP_011305188.1):",
+            "image": "./organisation/nife4e.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 47,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 4f",
+            "description": "e.g. Desulfosporosinus orientis (WP_014183752.1):",
+            "image": "./organisation/nife4f.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 48,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 4g",
+            "description": "e.g. Desulfosporosinus orientis (WP_014183752.1):",
+            "image": "./organisation/nife4g.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 49,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 4h",
+            "description": "e.g. Methanothermobacter marburgensis (WP_013295617.1):",
+            "image": "./organisation/nife4h.png"
+        }
+    },
+    {
+        "model": "browser.geneticorganisation",
+        "pk": 50,
+        "fields": {
+            "hydrogenase_class": "[NiFe] Group 4i",
+            "description": "e.g. Methanothermobacter marburgensis (WP-013296415.1):",
+            "image": "./organisation/nife4i.png"
         }
     }
 ]
